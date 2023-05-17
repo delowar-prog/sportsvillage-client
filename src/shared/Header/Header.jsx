@@ -3,11 +3,11 @@ import Logo from '../../assets/logo.png'
 const Header = () => {
   return (
     <div>
-      <div className="navbar flex flex-col sm:flex-row bg-green-700 px-1 lg:px-14">
+      <div className="navbar flex flex-col sm:flex-row bg-green-700 px-5 lg:px-14">
         <div>
           <div className="flex flex-col">
             <img src={Logo} className='w-36'></img>
-            <h3 className='uppercase text-md tracking-widest text-white font-bold'>Sports Village</h3>
+            <h3 className='uppercase text-md tracking-widest text-white font-bold'>Sports <span className=''>Village</span></h3>
           </div>
           {/*mobile response toggle menu*/}
           <div className="dropdown">

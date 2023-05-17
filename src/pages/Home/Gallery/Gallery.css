@@ -1,0 +1,8 @@
+.overlay{
+    left: -700px;
+    bottom: 0;
+    transition: all 0.5s;
+}
+.gallery-item:hover .overlay{
+    left: 0px;
+}
