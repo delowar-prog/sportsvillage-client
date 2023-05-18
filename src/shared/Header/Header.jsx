@@ -1,14 +1,13 @@
-import React from 'react'
 import Logo from '../../assets/logo.png'
 import { Link } from 'react-router-dom'
 const Header = () => {
   return (
-    <div>
+    <div className='sticky top-0 z-50'>
       <div className="navbar flex flex-col sm:flex-row bg-green-600 px-5 lg:px-14">
         <div>
           <div className="flex flex-col">
             <img src={Logo} className='w-36'></img>
-            <h3 className='uppercase text-md tracking-widest text-white font-bold'>Sports <span className=''>Village</span></h3>
+            <h3 className='uppercase text-md tracking-widest text-white font-bold'>Sports <span className='text-yellow-400'>Village</span></h3>
           </div>
           {/*mobile response toggle menu*/}
           <div className="dropdown">
@@ -33,8 +32,8 @@ const Header = () => {
         </div>
         {/*end mobile response toggle menu */}
         <div className="md:flex flex-1 hidden text-white">
-          <ul className="menu menu-horizontal px-1">
-            <li><a>Home</a></li>
+          <ul className="menu menu-horizontal px-1 uppercase font-semibold text-sm">
+            <li><Link to="/">Home</Link></li>
             <li><a>All Toys</a></li>
             <li><a>My Toys</a></li>
             <li><a>Add Toys</a></li>
