@@ -27,11 +27,11 @@ const Login = () => {
     //google login
     const loginByGoogle=()=>{
         loginWithGoogle().then(()=>{
-                navigate('/')
+            navigate(from, {replace:true})
         }).catch(error => setError(error.message))
     }
     return (
-        <div className='flex flex-col'>
+        <div className='flex flex-col' data-aos="fade-up" data-aos-offset="300" data-aos-duration="1000">
             <div className="bg-base-200">
                 <div className="hero-content flex-col">
                     <h2 className='text-3xl font-bold mt-5'>Sign In</h2>

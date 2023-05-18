@@ -4,7 +4,7 @@ import slider2 from '../../../assets/slider/football.jpg'
 import slider3 from '../../../assets/slider/voli.jpg'
 const Banner = () => {
     return (
-        <div>
+        <div data-aos="zoom-in-up">
             <div className="carousel w-full">
                 <div id="slide1" className="carousel-item relative w-full">
                     <img src={slider1} className="w-full" />

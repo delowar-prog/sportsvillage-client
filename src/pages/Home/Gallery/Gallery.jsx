@@ -7,9 +7,11 @@ import img5 from '../../../assets/gallery/valiball.jpg'
 import img6 from '../../../assets/gallery/bat.jpg'
 import img7 from '../../../assets/gallery/cricket.jpg'
 import './Gallery.css'
+import AOS from 'aos';
 const Gallery = () => {
+    AOS.init();
     return (
-        <div className='p-5 lg:p-14'>
+        <div className='p-5 lg:p-14' data-aos="fade-up" data-aos-offset="400" data-aos-duration="3000">
             <div className='flex flex-col md:flex-row justify-center'>
                 <div className='md:w-[32%]'>
                     <div className='gallery-item relative overflow-hidden'>
@@ -39,7 +41,7 @@ const Gallery = () => {
                             <button className="btn btn-info btn-outline rounded-none px-8 text-white">SHOP NOW</button>
                         </div>
                     </div>
-                    <div className='gallery-item relative overflow-hidden'>
+                    <div className='gallery-item relative overflow-hidden' >
                         <img src={img6} className='imgstyle w-full'></img>
                         <div className='overlay absolute w-full h-full opacity-90 bg-gray-800 p-5 md:p-5 space-y-7'>
                             <h1 className='text-white text-3xl font-bold uppercase'>Special <span className='text-sky-500'>Offer</span></h1>
