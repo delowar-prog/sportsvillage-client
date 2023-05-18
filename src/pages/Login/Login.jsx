@@ -2,10 +2,12 @@ import { useContext, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../providers/AuthProviders'
 import { FcGoogle } from "react-icons/fc";
+import useTitle from '../../hooks/useTitle';
 
 const Login = () => {
+    useTitle('Login')
     const [error, setError]=useState('')
-    const { signInEmailPass } = useContext(AuthContext)
+    const { signInEmailPass,loginWithGoogle } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
     // const from = location.state?.from.pathname || '/'
@@ -22,6 +24,12 @@ const Login = () => {
                 navigate('/')
             }).catch(error => setError(error.message))
     }
+    //google login
+    const loginByGoogle=()=>{
+        loginWithGoogle().then(()=>{
+                navigate('/')
+        }).catch(error => setError(error.message))
+    }
     return (
         <div className='flex flex-col'>
             <div className="bg-base-200">
@@ -31,7 +39,7 @@ const Login = () => {
                         <form onSubmit={handleLogin}>
                             <div className="card-body">
                             {
-                                error && <h3 className='text-md text-center bg-gray-300 text-red-500 font-bold p-1'>{error}</h3>
+                                error && <h3 className='text-md text-center bg-gray-300 text-red-500 font-bold p-1 rounded'>{error}</h3>
                             }
                                 <div className="form-control">
                                     <label className="label">
@@ -56,7 +64,7 @@ const Login = () => {
                         </form>
                     </div>
                     <div className="divider">OR</div>
-                    <button className="btn btn-outline border-gray-400 hover:bg-gray-300 hover:text-gray-800 gap-2">
+                    <button onClick={loginByGoogle} className="btn btn-outline border-gray-400 hover:bg-gray-300 hover:text-gray-800 gap-2">
                         <FcGoogle className='text-xl'></FcGoogle>
                         Continue with Google
                     </button>

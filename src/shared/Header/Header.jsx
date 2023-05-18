@@ -1,10 +1,16 @@
 import { useContext } from 'react'
 import Logo from '../../assets/logo.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../providers/AuthProviders'
 import Profile from '../../assets/profile.jpg'
 const Header = () => {
-  const {user}=useContext(AuthContext)
+  const {user, userLogout}=useContext(AuthContext)
+  const navigate=useNavigate()
+  const handleLogout=()=>{
+    userLogout().then(()=>{
+      navigate('/')
+    }).catch(err=>console.log(err))
+  }
   return (
     <div className='sticky top-0 z-50'>
       <div className="navbar flex flex-col sm:flex-row bg-indigo-800  px-5 lg:px-14">
@@ -35,12 +41,14 @@ const Header = () => {
           </div>
         </div>
         {/*end mobile response toggle menu */}
-        <div className="md:flex flex-1 hidden text-white">
+        <div className="md:flex ml-20 flex-1 hidden text-white">
           <ul className="menu menu-horizontal px-1 uppercase font-semibold text-sm">
             <li><Link to="/">Home</Link></li>
             <li><a>All Toys</a></li>
-            <li><a>My Toys</a></li>
-            <li><a>Add Toys</a></li>
+            {
+              user && <><li><a>My Toys</a></li>
+              <li><a>Add Toys</a></li></>
+            }
             <li><a>Blog</a></li>
           </ul>
         </div>
@@ -63,11 +71,11 @@ const Header = () => {
                 </a>
               </li>
               <li><a>Settings</a></li>
-              <li><a>Logout</a></li>
+              <li><button type='submit' onClick={handleLogout}>Logout</button></li>
             </ul>
           </div>:
           <div>
-          <Link to='/login' className='text-white'>login</Link>
+          <Link to='/login' className='text-white uppercase'>login</Link>
         </div>
           }
           
