@@ -10,7 +10,7 @@ const Login = () => {
     const { signInEmailPass,loginWithGoogle } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
-    // const from = location.state?.from.pathname || '/'
+    const from = location.state?.from.pathname || '/'
     
     const handleLogin = (event) => {
         event.preventDefault()
@@ -21,7 +21,7 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user
                 console.log(loggedUser)
-                navigate('/')
+                navigate(from, {replace:true})
             }).catch(error => setError(error.message))
     }
     //google login

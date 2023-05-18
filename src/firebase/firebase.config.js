@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCodwg9sC8AqS5hL3zGQEfllaeJoX2uxS4",
-  authDomain: "sports-village-auth.firebaseapp.com",
-  projectId: "sports-village-auth",
-  storageBucket: "sports-village-auth.appspot.com",
-  messagingSenderId: "700155124897",
-  appId: "1:700155124897:web:c9069c92a93741745b24e0"
+  apiKey:import.meta.env.VITE_APIKEY,
+  authDomain:import.meta.env.VITE_AUTHDOMAIN,
+  projectId:import.meta.env.VITE_PROJECTID,
+  storageBucket:import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId:import.meta.env.VITE_MESSAGINGSENDERID,
+  appId:import.meta.env.VITE_APPID
 };
 
 // Initialize Firebase
