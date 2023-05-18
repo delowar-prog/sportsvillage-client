@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const Header = () => {
   return (
     <div className='sticky top-0 z-50'>
-      <div className="navbar flex flex-col sm:flex-row bg-green-600 px-5 lg:px-14">
+      <div className="navbar flex flex-col sm:flex-row bg-indigo-800  px-5 lg:px-14">
         <div>
           <div className="flex flex-col">
             <img src={Logo} className='w-36'></img>
@@ -42,7 +42,7 @@ const Header = () => {
         </div>
         <div className="flex-none gap-2">
           <div className="form-control">
-            <input type="text" placeholder="Search" className="input input-bordered" />
+            <input type="text" placeholder="Search" className="input" />
           </div>
           <div>
             <Link to='/login' className='text-white'>login</Link>

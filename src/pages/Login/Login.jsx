@@ -1,9 +1,27 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../providers/AuthProviders'
 import { FcGoogle } from "react-icons/fc";
 
-
+const Login = () => {
+    const [error, setError]=useState('')
+    const { signInEmailPass } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    // const from = location.state?.from.pathname || '/'
+    
+    const handleLogin = (event) => {
+        event.preventDefault()
+        const form = event.target
+        const email = form.email.value
+        const password = form.password.value
+        signInEmailPass(email, password)
+            .then(result => {
+                const loggedUser = result.user
+                console.log(loggedUser)
+                navigate('/')
+            }).catch(error => setError(error.message))
+    }
     return (
         <div className='flex flex-col'>
             <div className="bg-base-200">
@@ -12,6 +30,9 @@ import { FcGoogle } from "react-icons/fc";
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleLogin}>
                             <div className="card-body">
+                            {
+                                error && <h3 className='text-md text-center bg-gray-300 text-red-500 font-bold p-1'>{error}</h3>
+                            }
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Email</span>
