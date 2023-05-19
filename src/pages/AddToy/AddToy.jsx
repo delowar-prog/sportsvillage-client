@@ -39,7 +39,7 @@ const AddToy = () => {
     }
 
     return (
-        <div className='' data-aos="fade-up" data-aos-offset="300" data-aos-duration="2000">
+        <div className=''>
             <div className="">
                 <div className="flex flex-col lg:flex-row items-center">
                     <div className="text-center lg:text-left w-[40%]">
@@ -52,11 +52,11 @@ const AddToy = () => {
                             <div className='m-5 flex w-[100%] gap-5'>
                                 <div className='w-full'>
                                     <label>Name of Toy</label><br />
-                                    <input className='w-full border border-gray-300 p-2' type="text" name="toyName" placeholder='Toy Name'></input>
+                                    <input className='w-full border border-gray-300 p-2' type="text" name="toyName" placeholder='Toy Name' required></input>
                                 </div>
                                 <div className='w-full'>
                                     <label className='hidden'>...</label><br />
-                                    <select name="category" className="border border-gray-300 w-[90%] p-2">
+                                    <select name="category" className="border border-gray-300 w-[90%] p-2" required>
                                         <option disabled selected>Select Category</option>
                                         <option value="cricket">Cricket</option>
                                         <option value="football">Football</option>
@@ -78,26 +78,26 @@ const AddToy = () => {
                             <div className='m-5 flex w-[100%] gap-5'>
                                 <div className='w-full'>
                                     <label>Price</label><br />
-                                    <input className='w-full border border-gray-300 p-2' type="text" name="price" placeholder='Price'></input>
+                                    <input className='w-full border border-gray-300 p-2' type="text" name="price" placeholder='Price' required></input>
                                 </div>
                                 <div className='w-full'>
                                     <label>Rating</label><br />
-                                    <input type="text" name="rating" className='w-[90%] border border-gray-300 p-2' placeholder='Ratings'></input>
+                                    <input type="text" name="rating" className='w-[90%] border border-gray-300 p-2' placeholder='Ratings' required></input>
                                 </div>
                             </div>
                             <div className='m-5 flex w-[100%] gap-5'>
                                 <div className='w-full'>
                                     <label>Available Quantity</label><br />
-                                    <input className='w-full border border-gray-300 p-2' type="text" name="qty" placeholder='Qty'></input>
+                                    <input className='w-full border border-gray-300 p-2' type="text" name="qty" placeholder='Qty' required></input>
                                 </div>
                                 <div className='w-full'>
                                     <label>Toy Image</label><br />
-                                    <input type="file" name='toyImg' className="file-input file-input-bordered file-input-sm w-full max-w-xs" />
+                                    <input type="file" name='toyImg' required className="file-input file-input-bordered file-input-sm w-full max-w-xs" />
                                 </div>
                             </div>
                             <div className='m-5 w-[100%]'>
                                 <label>Details</label><br />
-                                <textarea placeholder="Toy Details" name="details" className="border border-gray-300 w-[95%] p-2" ></textarea>
+                                <textarea placeholder="Toy Details" name="details" className="border border-gray-300 w-[95%] p-2" required></textarea>
                             </div>
                             <div className='m-5 w-[95%]'>
                             <button type="submit" className="btn btn-primary btn-block">Add Confirm</button>

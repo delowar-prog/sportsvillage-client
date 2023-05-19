@@ -44,7 +44,7 @@ const Header = () => {
         <div className="md:flex ml-20 flex-1 hidden text-white">
           <ul className="menu menu-horizontal px-1 uppercase font-semibold text-sm">
             <li><Link to="/">Home</Link></li>
-            <li><a>All Toys</a></li>
+            <li><Link to="/alltoys">All Toys</Link></li>
             {
               user && <li><a>My Toys</a></li>
               
@@ -61,7 +61,7 @@ const Header = () => {
             user ? <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img src={Profile} />
+                <img src={Profile} title={user.displayName}/>
               </div>
             </label>
             <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">

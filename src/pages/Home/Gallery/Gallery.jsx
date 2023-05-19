@@ -7,9 +7,7 @@ import img5 from '../../../assets/gallery/valiball.jpg'
 import img6 from '../../../assets/gallery/bat.jpg'
 import img7 from '../../../assets/gallery/cricket.jpg'
 import './Gallery.css'
-import AOS from 'aos';
 const Gallery = () => {
-    AOS.init();
     return (
         <div className='p-5 lg:p-14' data-aos="fade-up" data-aos-offset="400" data-aos-duration="3000">
             <div className='flex flex-col md:flex-row justify-center'>
