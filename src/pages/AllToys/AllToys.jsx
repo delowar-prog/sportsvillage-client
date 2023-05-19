@@ -1,5 +1,13 @@
-
+import { useEffect, useState } from "react"
+import { GrView } from "react-icons/gr";
 const AllToys = () => {
+    const [toys, setToys] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:5000/toys')
+            .then(res => res.json())
+            .then(data => setToys(data))
+    }, [])
     return (
         <div className="bg-gradient-to-tr from-slate-100 to-slate-400 p-14">
             <div className="">
@@ -18,24 +26,22 @@ const AllToys = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th>1</th>
-                                <td>Cy Ganderton</td>
-                                <td>Quality Control Specialist</td>
-                                <td>Littel, Schaden and Vandervort</td>
-                                <td>Canada</td>
-                                <td>12/16/2020</td>
-                                <td>Blue</td>
-                            </tr>
-                            <tr>
-                                <th>2</th>
-                                <td>Hart Hagerty</td>
-                                <td>Desktop Support Technician</td>
-                                <td>Zemlak, Daniel and Leannon</td>
-                                <td>United States</td>
-                                <td>12/5/2020</td>
-                                <td>Purple</td>
-                            </tr>
+                            {
+                          
+                                toys.map((toy,i) => {
+                                    i++
+                                    return <tr key={toy._id}>
+                                        <th>{i}</th>
+                                        <td>{toy.sellerName}</td>
+                                        <td>{toy.toyName}</td>
+                                        <td>{toy.category}</td>
+                                        <td>${toy.price}</td>
+                                        <td>{toy.qty}</td>
+                                        <td><button className="btn btn-active btn-ghost text-xl"><GrView/></button></td>
+                                    </tr>
+                                })
+
+                            }
                         </tbody>
                         <tfoot>
                             <tr>
