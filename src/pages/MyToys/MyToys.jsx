@@ -1,17 +1,29 @@
-import { useEffect, useState } from "react"
-import { GrView } from "react-icons/gr";
-const AllToys = () => {
+import { useContext, useEffect, useState } from 'react'
+import { AuthContext } from '../../providers/AuthProviders'
+import { useNavigate } from 'react-router-dom'
+import { BsPencil, BsTrash } from "react-icons/bs";
+const MyToys = () => {
+    const {user}=useContext(AuthContext)
     const [toys, setToys] = useState([])
-
+    const navigate=useNavigate()
+  
+    const url=`http://localhost:5000/toys?email=${user.email}`
     useEffect(() => {
-        fetch('http://localhost:5000/toys')
+        fetch(url)
             .then(res => res.json())
-            .then(data => setToys(data))
-    }, [])
+            .then(data => {
+                if(!data.error){
+                    setToys(data)
+                }else{
+                    navigate('/')
+                }
+            })
+    }, [url, navigate])
+
     return (
         <div className="bg-gradient-to-tr from-slate-100 to-slate-400 p-14">
             <div className="">
-                <h1 className='pageHeading text-cyan-500 text-xl text-center'>All Toy List</h1>
+                <h1 className='pageHeading text-cyan-500 text-xl text-center'>My Toys</h1>
                 <div className="overflow-x-auto mt-14">
                     <table className="table table-compact w-full">
                         <thead>
@@ -22,7 +34,7 @@ const AllToys = () => {
                                 <th>Sub Category</th>
                                 <th>Price</th>
                                 <th>Available Qty</th>
-                                <th>View Details</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,7 +49,10 @@ const AllToys = () => {
                                         <td>{toy.category}</td>
                                         <td>${toy.price}</td>
                                         <td>{toy.qty}</td>
-                                        <td><button className="btn btn-active btn-info text-md"><GrView/></button></td>
+                                        <td className='flex gap-2'>
+                                        <button className="btn btn-active btn-primary text-lg"><BsPencil/></button>
+                                        <button className="btn btn-active btn-error text-lg"><BsTrash/></button>
+                                        </td>
                                     </tr>
                                 })
 
@@ -61,4 +76,4 @@ const AllToys = () => {
     )
 }
 
-export default AllToys
+export default MyToys
