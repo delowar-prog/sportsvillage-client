@@ -13,7 +13,7 @@ const Header = () => {
   }
   return (
     <div className='sticky top-0 z-50'>
-      <div className="navbar flex flex-col sm:flex-row bg-indigo-800  px-5 lg:px-14">
+      <div className="navbar flex justify-between flex-col sm:flex-row bg-indigo-800  px-5 lg:px-14">
         <div>
           <div className="flex flex-col">
             <img src={Logo} className='w-36'></img>
@@ -41,7 +41,7 @@ const Header = () => {
           </div>
         </div>
         {/*end mobile response toggle menu */}
-        <div className="md:flex ml-20 flex-1 hidden text-white">
+        <div className="md:flex ml-20 hidden text-white">
           <ul className="menu menu-horizontal px-1 uppercase font-semibold text-sm">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/alltoys">All Toys</Link></li>
@@ -52,11 +52,7 @@ const Header = () => {
             <li><Link to="/addtoy">Add Toys</Link></li>
             <li><a>Blog</a></li>
           </ul>
-        </div>
-        <div className="flex-none gap-2">
-          <div className="form-control">
-            <input type="text" placeholder="Search" className="input" />
-          </div>
+          <div className="flex-none text-gray-700 gap-2">
           {
             user ? <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -79,8 +75,7 @@ const Header = () => {
           <Link to='/login' className='text-white uppercase'>login</Link>
         </div>
           }
-          
-          
+        </div>
         </div>
       </div>
     </div>
