@@ -4,10 +4,15 @@ import { Link } from "react-router-dom";
 const AllToys = () => {
     const [toys, setToys] = useState([])
     const [searchText, setSearchText]=useState('')
+    const [loading, setLoading]=useState(true)
+  
     useEffect(() => {
         fetch('http://localhost:5000/toys')
             .then(res => res.json())
-            .then(data => setToys(data))
+            .then(data => {
+                setToys(data)
+                setLoading(false)
+            })
     }, [])
 
     const handleSearch=()=>{

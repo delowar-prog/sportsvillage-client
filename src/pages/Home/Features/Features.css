@@ -1,0 +1,24 @@
+
+.features-item-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:20px;
+}
+.feature-card{
+    width: 100%;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+.feature-card img{
+    width: 100%;
+    border-radius: 10px;
+}
+.feature-card:hover{
+    transform: scale(1.03);
+}
+
+@media only screen and (max-width: 600px) {
+    .features-item-container{
+        grid-template-columns: repeat(1, 1fr);
+    } 
+}

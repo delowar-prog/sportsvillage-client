@@ -9,7 +9,7 @@ const MyToys = () => {
     const {user} = useContext(AuthContext)
     const [toys, setToys] = useState([])
     const navigate = useNavigate()
-    const url = `http://localhost:5000/toys?email=${user.email}`
+    const url = `http://localhost:5000/toys?email=${user?.email}`
 
     useEffect(() => {
         fetch(url)

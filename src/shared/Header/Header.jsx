@@ -50,7 +50,7 @@ const Header = () => {
               
             }
             <li><Link to="/addtoy">Add Toys</Link></li>
-            <li><a>Blog</a></li>
+            <li><Link to="/blogs">Blog</Link></li>
           </ul>
           <div className="flex-none text-gray-700 gap-2">
           {

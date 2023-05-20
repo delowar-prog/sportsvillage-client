@@ -11,6 +11,7 @@ import MyToys from "../pages/MyToys/MyToys";
 import UpdateToy from "../pages/UpdateToy/UpdateToy";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import ViewDetails from "../pages/ViewDetails/ViewDetails";
+import Blgos from "../pages/Blogs/Blgos";
 
   const router = createBrowserRouter([
     {
@@ -40,7 +41,7 @@ import ViewDetails from "../pages/ViewDetails/ViewDetails";
         },
         {
           path:'details/:id',
-          element:<ViewDetails></ViewDetails>,
+          element:<PrivateRoutes><ViewDetails></ViewDetails></PrivateRoutes>,
           loader:({params})=>fetch(`http://localhost:5000/toys/${params.id}`)
         },
         {
@@ -51,6 +52,10 @@ import ViewDetails from "../pages/ViewDetails/ViewDetails";
           path:'updateToy/:id',
           element:<UpdateToy></UpdateToy>,
           loader:({params})=>fetch(`http://localhost:5000/toys/${params.id}`)
+        },
+        {
+          path:'/blogs',
+          element:<Blgos></Blgos>
         }
       ]
     },
