@@ -9,7 +9,7 @@ const MyToys = () => {
     const {user} = useContext(AuthContext)
     const [toys, setToys] = useState([])
     const navigate = useNavigate()
-    const url = `http://localhost:5000/toys?email=${user?.email}`
+    const url = `http://localhost:5000/toys?email=${user.email}`
 
     useEffect(() => {
         fetch(url)
@@ -53,8 +53,10 @@ const MyToys = () => {
                     }).catch(error => console.log(error.message))
             }
         })
-
     }
+
+
+
     return (
         <div className="bg-gradient-to-tr from-slate-100 to-slate-400 p-14">
             <div className="">
@@ -91,7 +93,7 @@ const MyToys = () => {
                                         <td>{toy.qty}</td>
                                         <td>{toy.details.slice(0, 25)}..</td>
                                         <td className='flex gap-2'>
-                                            <Link to={`/updateToy/${toy._id}`}><button className="btn btn-active btn-primary text-lg"><BsPencil /></button></Link>
+                                        <button className="btn btn-active btn-primary text-lg"><Link to={`/updateToy/${toy._id}`}><BsPencil /></Link></button>
                                             <button onClick={() => handleDeleteToy(toy._id)} className="btn btn-active btn-error text-lg"><BsTrash /></button>
                                         </td>
                                     </tr>

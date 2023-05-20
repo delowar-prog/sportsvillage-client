@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import addImg from '../../assets/add_image.png'
 import './AddToy.css'
 import { AuthContext } from '../../providers/AuthProviders'
@@ -7,6 +7,13 @@ import {toast } from 'react-toastify';
 const AddToy = () => {
     useTitle('addtoy')
     const {user}=useContext(AuthContext)
+    const [categories, setCategories]=useState([])
+
+    useEffect(()=>{
+        fetch('http://localhost:5000/categories')
+        .then(res=>res.json())
+        .then(data=>setCategories(data))
+    },[])
 
     const handleAddToy=(event)=>{
         event.preventDefault()
@@ -58,10 +65,11 @@ const AddToy = () => {
                                     <label className='hidden'>...</label><br />
                                     <select name="category" className="border border-gray-300 w-[90%] p-2" required>
                                         <option disabled selected>Select Category</option>
-                                        <option value="cricket">Cricket</option>
-                                        <option value="football">Football</option>
-                                        <option value="badminton">Badminton</option>
-                                        <option value="hawkeyes">Hawkeyes</option>
+                                        {
+                                            categories.map(category=>{
+                                                return <option key={category._id} value={category.name}>{category.name}</option>
+                                            })
+                                        }
                                     </select>
                                 </div>
                             </div>
