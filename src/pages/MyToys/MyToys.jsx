@@ -8,8 +8,10 @@ import './MyToys.css'
 const MyToys = () => {
     const {user} = useContext(AuthContext)
     const [toys, setToys] = useState([])
+    const [sort, setSort]=useState(1)
     const navigate = useNavigate()
-    const url = `http://localhost:5000/toys?email=${user?.email}`
+    // const url = `http://localhost:5000/toys?email=${user?.email}`
+    const url = `http://localhost:5000/toys?email=${user?.email}&sort={sort}`
 
     useEffect(() => {
         fetch(url)
@@ -70,7 +72,7 @@ const MyToys = () => {
                                 <th>Seller Name</th>
                                 <th>Toy Name</th>
                                 <th>Sub Category</th>
-                                <th><div className="flex gap-1"><span className="flex"><BsArrowDown className="cursor-pointer" /><BsArrowUp className="cursor-pointer"/></span>Price</div></th>
+                                <th><div className="flex gap-1"><span className="flex"><BsArrowDown onClick={()=>setSort(1)} className="cursor-pointer" /><BsArrowUp onClick={()=>setSort(-1)} className="cursor-pointer"/></span>Price</div></th>
                                 <th>Rating</th>
                                 <th>Qty</th>
                                 <th>Details</th>
