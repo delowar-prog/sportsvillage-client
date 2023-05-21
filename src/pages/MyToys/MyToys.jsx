@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../providers/AuthProviders'
 import { Link, useNavigate } from 'react-router-dom'
-import { BsPencil, BsTrash } from "react-icons/bs";
+import { BsPencil, BsTrash,BsArrowDown,BsArrowUp } from "react-icons/bs";
 import Swal from 'sweetalert2'
 import './MyToys.css'
 
@@ -70,7 +70,7 @@ const MyToys = () => {
                                 <th>Seller Name</th>
                                 <th>Toy Name</th>
                                 <th>Sub Category</th>
-                                <th>Price</th>
+                                <th><div className="flex gap-1"><span className="flex"><BsArrowDown className="cursor-pointer" /><BsArrowUp className="cursor-pointer"/></span>Price</div></th>
                                 <th>Rating</th>
                                 <th>Qty</th>
                                 <th>Details</th>
@@ -81,9 +81,8 @@ const MyToys = () => {
                             {
 
                                 toys.map((toy, i) => {
-                                    i++
                                     return <tr key={toy._id}>
-                                        <th>{i}</th>
+                                        <td>{i+1}</td>
                                         <td><img src={toy.toyImg} className="w-11"></img></td>
                                         <td>{toy.sellerName}</td>
                                         <td>{toy.toyName}</td>
@@ -93,12 +92,11 @@ const MyToys = () => {
                                         <td>{toy.qty}</td>
                                         <td>{toy.details.slice(0, 25)}..</td>
                                         <td className='flex gap-2'>
-                                        <button className="btn btn-active btn-primary text-lg"><Link to={`/updateToy/${toy._id}`}><BsPencil /></Link></button>
+                                        <Link to={`/updateToy/${toy._id}`}><button className="btn btn-active btn-primary text-lg"><BsPencil /></button></Link>
                                             <button onClick={() => handleDeleteToy(toy._id)} className="btn btn-active btn-error text-lg"><BsTrash /></button>
                                         </td>
                                     </tr>
                                 })
-
                             }
                         </tbody>
                     </table>
