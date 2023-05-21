@@ -2,15 +2,16 @@ import { useContext } from 'react'
 import Logo from '../../assets/logo.png'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../providers/AuthProviders'
-import Profile from '../../assets/profile.jpg'
+
 const Header = () => {
-  const {user, userLogout}=useContext(AuthContext)
-  const navigate=useNavigate()
-  const handleLogout=()=>{
-    userLogout().then(()=>{
+  const { user, userLogout } = useContext(AuthContext)
+  const navigate = useNavigate()
+  const handleLogout = () => {
+    userLogout().then(() => {
       navigate('/')
-    }).catch(err=>console.log(err))
+    }).catch(err => console.log(err))
   }
+
   return (
     <div className='sticky top-0 z-50'>
       <div className="navbar flex justify-between flex-col sm:flex-row bg-indigo-800  px-5 lg:px-14">
@@ -47,35 +48,35 @@ const Header = () => {
             <li><Link to="/alltoys">All Toys</Link></li>
             {
               user && <li><Link to="/mytoys">My Toys</Link></li>
-              
+
             }
             <li><Link to="/addtoy">Add Toys</Link></li>
             <li><Link to="/blogs">Blog</Link></li>
           </ul>
           <div className="flex-none text-gray-700 gap-2">
-          {
-            user ? <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img src={user.photoURL} title={user.displayName}/>
-              </div>
-            </label>
-            <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-              <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
-              </li>
-              <li><a>Settings</a></li>
-              <li><button type='submit' onClick={handleLogout}>Logout</button></li>
-            </ul>
-          </div>:
-          <div>
-          <Link to='/login' className='text-white uppercase'>login</Link>
-        </div>
-          }
-        </div>
+            {
+              user ? <div className="dropdown dropdown-end">
+                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                  <div className="w-10 rounded-full">
+                    <img src={user.photoURL} title={user.displayName} />
+                  </div>
+                </label>
+                <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+                  <li>
+                    <a className="justify-between">
+                      Profile
+                      <span className="badge">New</span>
+                    </a>
+                  </li>
+                  <li><a>Settings</a></li>
+                  <li><button type='submit' onClick={handleLogout}>Logout</button></li>
+                </ul>
+              </div> :
+                <div>
+                  <Link to='/login' className='text-white uppercase'>login</Link>
+                </div>
+            }
+          </div>
         </div>
       </div>
     </div>

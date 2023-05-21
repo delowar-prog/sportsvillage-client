@@ -1,10 +1,11 @@
-import React from 'react'
+import { BsStarFill, BsStarHalf } from 'react-icons/bs'
 import { useLoaderData } from 'react-router-dom'
 
 const ViewDetails = () => {
   const detailsData = useLoaderData()
   console.log(detailsData)
-  const { _id, sellerName, sellerEmail, toyName, toyImg, category, price, details, rating, qty } = detailsData
+  const {sellerName, sellerEmail, toyName, toyImg, category, price, details, rating, qty } = detailsData
+ 
   return (
     <div>
       <div className='flex p-8 gap-14'>
@@ -19,7 +20,7 @@ const ViewDetails = () => {
           <p><strong>Details:</strong> {details}</p>
           <h3 className='text-lg'><strong>Price :</strong><span className='text-gray-600'>${price}</span> </h3>
           <h3 className='text-lg'><strong>In Stock :</strong><span className='text-gray-600'> {qty}</span> </h3>
-          <h3 className='text-lg'><strong>Rating :</strong><span className='text-gray-600'> {rating}</span> </h3>
+          <h3 className='text-lg flex gap-1 items-center '><strong>Rating :</strong><span className='text-gray-600 flex gap-1 items-center'> <BsStarFill /> <BsStarFill /><BsStarFill /><BsStarFill /><BsStarHalf /> {rating}</span> </h3>
           <button className="btn btn-info btn-outline rounded-none px-8 text-white">SHOP NOW</button>
         </div>
         <div className='right-sidebar text-white'>

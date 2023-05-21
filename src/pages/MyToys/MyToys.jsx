@@ -1,17 +1,17 @@
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../providers/AuthProviders'
 import { Link, useNavigate } from 'react-router-dom'
-import { BsPencil, BsTrash,BsArrowDown,BsArrowUp } from "react-icons/bs";
+import { BsPencil, BsTrash, BsArrowDown, BsArrowUp } from "react-icons/bs";
 import Swal from 'sweetalert2'
 import './MyToys.css'
 
 const MyToys = () => {
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const [toys, setToys] = useState([])
-    const [sort, setSort]=useState(1)
+    const [sort, setSort] = useState(1)
     const navigate = useNavigate()
-    // const url = `http://localhost:5000/toys?email=${user?.email}`
-    const url = `http://localhost:5000/toys?email=${user?.email}&sort={sort}`
+    const useremail = user?.email
+    const url = `https://sportsvillage-server.vercel.app/toys?email=${useremail}&sort={sort}`
 
     useEffect(() => {
         fetch(url)
@@ -26,7 +26,7 @@ const MyToys = () => {
     }, [url, navigate])
 
 
-//delete toy
+    //delete toy
     const handleDeleteToy = id => {
         Swal.fire({
             title: 'Are you sure?',
@@ -38,8 +38,8 @@ const MyToys = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/toys/${id}`, {
-                    method: "DELETE"
+                fetch(`https://sportsvillage-server.vercel.app/toys/${id}`, {
+                    method: "DELETE",
                 })
                     .then(res => res.json())
                     .then(data => {
@@ -57,8 +57,6 @@ const MyToys = () => {
         })
     }
 
-
-
     return (
         <div className="bg-gradient-to-tr from-slate-100 to-slate-400 p-14">
             <div className="">
@@ -72,7 +70,7 @@ const MyToys = () => {
                                 <th>Seller Name</th>
                                 <th>Toy Name</th>
                                 <th>Sub Category</th>
-                                <th><div className="flex gap-1"><span className="flex"><BsArrowDown onClick={()=>setSort(1)} className="cursor-pointer" /><BsArrowUp onClick={()=>setSort(-1)} className="cursor-pointer"/></span>Price</div></th>
+                                <th><div className="flex gap-1"><span className="flex"><BsArrowDown onClick={() => setSort(1)} className="cursor-pointer" /><BsArrowUp onClick={() => setSort(-1)} className="cursor-pointer" /></span>Price</div></th>
                                 <th>Rating</th>
                                 <th>Qty</th>
                                 <th>Details</th>
@@ -81,10 +79,9 @@ const MyToys = () => {
                         </thead>
                         <tbody>
                             {
-
                                 toys.map((toy, i) => {
                                     return <tr key={toy._id}>
-                                        <td>{i+1}</td>
+                                        <td>{i + 1}</td>
                                         <td><img src={toy.toyImg} className="w-11"></img></td>
                                         <td>{toy.sellerName}</td>
                                         <td>{toy.toyName}</td>
@@ -94,7 +91,7 @@ const MyToys = () => {
                                         <td>{toy.qty}</td>
                                         <td>{toy.details.slice(0, 25)}..</td>
                                         <td className='flex gap-2'>
-                                        <Link to={`/updateToy/${toy._id}`}><button className="btn btn-active btn-primary text-lg"><BsPencil /></button></Link>
+                                            <Link to={`/updateToy/${toy._id}`}><button className="btn btn-active btn-primary text-lg"><BsPencil /></button></Link>
                                             <button onClick={() => handleDeleteToy(toy._id)} className="btn btn-active btn-error text-lg"><BsTrash /></button>
                                         </td>
                                     </tr>

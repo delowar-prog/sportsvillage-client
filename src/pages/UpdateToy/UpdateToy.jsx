@@ -1,15 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext} from 'react'
 import { AuthContext } from '../../providers/AuthProviders'
 import useTitle from '../../hooks/useTitle'
 import { toast } from 'react-toastify';
 import { useLoaderData } from 'react-router-dom';
 
 const UpdateToy = () => {
-    const [categories, setCategories] = useState([])
     useTitle('updateToy')
     const { user } = useContext(AuthContext)
     const updatedToy = useLoaderData()
-   
     const { _id, toyName, toyImg, category, price, details, rating, qty } = updatedToy
 
     const handleUpdate = (event) => {
@@ -25,7 +23,7 @@ const UpdateToy = () => {
         const toyImg = form.toyImg.value
         const details = form.details.value
         const toyData = { toyName, category, sellerName, sellerEmail, price, rating, qty, toyImg, details }
-        console.log(toyData)
+        
         fetch(`http://localhost:5000/toys/${_id}`,{
             method:"PUT",
             headers:{

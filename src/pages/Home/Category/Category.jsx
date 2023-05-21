@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { useState } from 'react'
 import './Category.css'
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
 import crickImg from '../../../assets/category/marotig.jpg'
@@ -18,9 +17,8 @@ const Category = () => {
     setCatName(name)
   }
 
-
   return (
-    <div className='px-14 bg-current' data-aos="fade-up" data-aos-offset="1500" data-aos-duration="3000">
+    <div className='px-14 bg-current' data-aos="fade-up" data-aos-duration="1000">
       <h1 className='text-3xl font-bold text-center text-white uppercase py-8'>Shop by category</h1>
       <div className='teb text-white py-8'>
         <ul className='flex gap-2 my-1'>
@@ -30,7 +28,7 @@ const Category = () => {
         </ul>
         <hr />
         <div className={catName === 'cricket' ? 'show-content mt-5' : 'content mt-5'}>
-          <div className='grid grid-cols-3 gap-8'>
+          <div className='grid md:grid-cols-3 gap-8'>
             <div className='item border border-gray-600 rounded p-5 cursor-pointer'>
               <img src={crickImg} className='w-full'></img>
               <div className='space-y-5 mt-5'>
@@ -62,21 +60,21 @@ const Category = () => {
         </div>
         {/**football */}
         <div className={catName === 'football' ? 'show-content mt-5' : 'content mt-5'}>
-          <div className='grid grid-cols-3 gap-8'>
+          <div className='grid md:grid-cols-3 gap-8'>
             <div className='item border border-gray-600 rounded p-5 cursor-pointer'>
               <img src={footballImg1} className='w-full'></img>
               <div className='space-y-5 mt-5'>
-                <h2 className='text-2xl'>Maroti Cricket Ball</h2>
-                <h2 className='text-4xl text-error'>Price : $50</h2>
-                <p className='flex gap-1 items-center'>Ratings : <BsStarFill /> <BsStarFill /><BsStarFill /><BsStarFill /><BsStarHalf /> 4.8</p>
+                <h2 className='text-2xl'>Dear Football Ball</h2>
+                <h2 className='text-4xl text-error'>Price : $2050</h2>
+                <p className='flex gap-1 items-center'>Ratings : <BsStarFill /> <BsStarFill /><BsStarFill /><BsStarFill /> 4.00</p>
                 <button className='btn btn-secondary'>View Details</button>
               </div>
             </div>
             <div className='item border border-gray-600 rounded p-5 cursor-pointer'>
               <img src={footballImg2} className='w-full'></img>
               <div className='space-y-5 mt-5'>
-                <h2 className='text-2xl'>Tendulkar Bat</h2>
-                <h2 className='text-4xl text-error'>Price : $3500</h2>
+                <h2 className='text-2xl'>World Cup Football</h2>
+                <h2 className='text-4xl text-error'>Price : $5500</h2>
                 <p className='flex gap-1 items-center'>Ratings : <BsStarFill /> <BsStarFill /><BsStarFill /><BsStarFill /><BsStarHalf /> 4.5</p>
                 <button className='btn btn-secondary'>View Details</button>
               </div>
@@ -84,9 +82,9 @@ const Category = () => {
             <div className='item border border-gray-600 rounded p-5 cursor-pointer'>
               <img src={footballImg3} className='w-full'></img>
               <div className='space-y-5 mt-5'>
-                <h2 className='text-2xl'>Maroti Cricket Ball</h2>
-                <h2 className='text-4xl text-error'>Price : $150</h2>
-                <p className='flex gap-1 items-center'>Ratings : <BsStarFill /> <BsStarFill /><BsStarFill /><BsStarFill /><BsStarHalf /> 4.6</p>
+                <h2 className='text-2xl'>Football for Kids</h2>
+                <h2 className='text-4xl text-error'>Price : $750</h2>
+                <p className='flex gap-1 items-center'>Ratings : <BsStarFill /> <BsStarFill /><BsStarFill /><BsStarFill /><BsStarHalf /> 4.5</p>
                 <button className='btn btn-secondary'>View Details</button>
               </div>
             </div>
@@ -94,21 +92,21 @@ const Category = () => {
         </div>
         {/**badminton */}
         <div className={catName === 'badminton' ? 'show-content mt-5' : 'content mt-5'}>
-          <div className='grid grid-cols-3 gap-8'>
+          <div className='grid md:grid-cols-3 gap-8'>
             <div className='item border border-gray-600 rounded p-5 cursor-pointer'>
               <img src={badminton1} className='w-full'></img>
               <div className='space-y-5 mt-5'>
-                <h2 className='text-2xl'>Maroti Cricket Ball</h2>
-                <h2 className='text-4xl text-error'>Price : $50</h2>
-                <p className='flex gap-1 items-center'>Ratings : <BsStarFill /> <BsStarFill /><BsStarFill /><BsStarFill /><BsStarHalf /> 4.8</p>
+                <h2 className='text-2xl'>Bat & Racket for Badminton</h2>
+                <h2 className='text-4xl text-error'>Price : $550</h2>
+                <p className='flex gap-1 items-center'>Ratings : <BsStarFill /> <BsStarFill /><BsStarFill /><BsStarHalf /> 3.6</p>
                 <button className='btn btn-secondary'>View Details</button>
               </div>
             </div>
             <div className='item border border-gray-600 rounded p-5 cursor-pointer'>
               <img src={badminton2} className='w-full'></img>
               <div className='space-y-5 mt-5'>
-                <h2 className='text-2xl'>Tendulkar Bat</h2>
-                <h2 className='text-4xl text-error'>Price : $3500</h2>
+                <h2 className='text-2xl'>Nice Racket Bat</h2>
+                <h2 className='text-4xl text-error'>Price : $1500</h2>
                 <p className='flex gap-1 items-center'>Ratings : <BsStarFill /> <BsStarFill /><BsStarFill /><BsStarFill /><BsStarHalf /> 4.5</p>
                 <button className='btn btn-secondary'>View Details</button>
               </div>
@@ -116,8 +114,8 @@ const Category = () => {
             <div className='item border border-gray-600 rounded p-5 cursor-pointer'>
               <img src={badminton3} className='w-full'></img>
               <div className='space-y-5 mt-5'>
-                <h2 className='text-2xl'>Maroti Cricket Ball</h2>
-                <h2 className='text-4xl text-error'>Price : $150</h2>
+                <h2 className='text-2xl'>Badminton Racket</h2>
+                <h2 className='text-4xl text-error'>Price : $350</h2>
                 <p className='flex gap-1 items-center'>Ratings : <BsStarFill /> <BsStarFill /><BsStarFill /><BsStarFill /><BsStarHalf /> 4.6</p>
                 <button className='btn btn-secondary'>View Details</button>
               </div>

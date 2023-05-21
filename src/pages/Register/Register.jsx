@@ -2,6 +2,7 @@ import { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../providers/AuthProviders'
 import useTitle from '../../hooks/useTitle'
+
 const Register = () => {
     useTitle('Register')
     const { signUpEmailPass, updateProfileInfo, userLogout } = useContext(AuthContext)
@@ -40,8 +41,8 @@ const Register = () => {
                             navigate('/login')
                         })
                     })
-                    .catch(error => setError(error.message))
-            }).catch(error => console.log(error))
+            .catch(error => setError(error.message))
+         }).catch(error => console.log(error))
     }
 
     return (
@@ -53,10 +54,10 @@ const Register = () => {
                         <form onSubmit={handleRegister}>
                             <div className="card-body">
                                 {
-                                    success && <h3 className='text-md text-center bg-gray-300 text-green-500 font-bold p-1'>{success}</h3>
+                                success && <h3 className='text-md text-center bg-gray-300 text-green-500 font-bold p-1'>{success}</h3>
                                 }
                                 {
-                                    error && <h3 className='text-md text-center bg-gray-300 text-red-500 font-bold p-1'>{error}</h3>
+                                error && <h3 className='text-md text-center bg-gray-300 text-red-500 font-bold p-1'>{error}</h3>
                                 }
                                 <div className="form-control">
                                     <label className="label">
